@@ -36,7 +36,6 @@ class DemoApplicationTests {
         mesList.add("妈妈");
         mesList.add("爷爷");
         mesList.add("奶奶");
-        mesList.add("大少奶奶");
 
     }
 
