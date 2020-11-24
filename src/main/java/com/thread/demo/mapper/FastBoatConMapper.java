@@ -1,6 +1,6 @@
-package test.thread.demo.mapper;
+package com.thread.demo.mapper;
 
-import test.thread.demo.entity.FastBoatCon;
+import com.thread.demo.entity.FastBoatCon;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

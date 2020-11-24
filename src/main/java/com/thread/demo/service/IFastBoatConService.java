@@ -1,6 +1,6 @@
-package test.thread.demo.service;
+package com.thread.demo.service;
 
-import test.thread.demo.entity.FastBoatCon;
+import com.thread.demo.entity.FastBoatCon;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

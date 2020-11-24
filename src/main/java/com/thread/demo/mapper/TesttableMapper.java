@@ -1,10 +1,9 @@
-package test.thread.demo.mapper;
+package com.thread.demo.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.mapstruct.Mapper;
-import test.thread.demo.entity.Testtable;
+import com.thread.demo.entity.Testtable;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.*;
 
 /**
  * <p>

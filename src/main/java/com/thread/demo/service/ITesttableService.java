@@ -1,9 +1,7 @@
-package test.thread.demo.service;
+package com.thread.demo.service;
 
-import org.springframework.stereotype.Service;
-import test.thread.demo.entity.Testtable;
+import com.thread.demo.entity.Testtable;
 import com.baomidou.mybatisplus.extension.service.IService;
-import test.thread.demo.mapper.TesttableMapper;
 
 /**
  * <p>

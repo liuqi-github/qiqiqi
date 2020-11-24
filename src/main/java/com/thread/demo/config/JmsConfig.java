@@ -1,4 +1,4 @@
-package test.thread.demo.config;
+package com.thread.demo.config;
 
 /**
  * @author LiuQi

@@ -1,4 +1,4 @@
-package test.thread.demo.entity;
+package com.thread.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;

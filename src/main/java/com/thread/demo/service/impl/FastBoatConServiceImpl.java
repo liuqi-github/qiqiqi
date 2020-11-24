@@ -1,8 +1,8 @@
-package test.thread.demo.service.impl;
+package com.thread.demo.service.impl;
 
-import test.thread.demo.entity.FastBoatCon;
-import test.thread.demo.mapper.FastBoatConMapper;
-import test.thread.demo.service.IFastBoatConService;
+import com.thread.demo.entity.FastBoatCon;
+import com.thread.demo.mapper.FastBoatConMapper;
+import com.thread.demo.service.IFastBoatConService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

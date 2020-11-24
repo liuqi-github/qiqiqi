@@ -1,4 +1,4 @@
-package test.thread.demo.controller;
+package com.thread.demo.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import test.thread.demo.entity.Testtable;
-import test.thread.demo.service.ITesttableService;
-import test.thread.demo.service.impl.TesttableServiceImpl;
+import com.thread.demo.entity.Testtable;
+import com.thread.demo.service.ITesttableService;
+import com.thread.demo.service.impl.TesttableServiceImpl;
 
 import java.sql.Wrapper;
 import java.util.List;

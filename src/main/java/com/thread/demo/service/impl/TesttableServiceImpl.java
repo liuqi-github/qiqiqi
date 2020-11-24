@@ -1,10 +1,11 @@
-package test.thread.demo.service.impl;
+package com.thread.demo.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import test.thread.demo.entity.Testtable;
-import test.thread.demo.mapper.TesttableMapper;
-import test.thread.demo.service.ITesttableService;
+import com.thread.demo.entity.Testtable;
+import com.thread.demo.mapper.TesttableMapper;
+import com.thread.demo.service.ITesttableService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
@@ -16,6 +17,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  * @since 2020-08-28
  */
 @Service
+@DS("master")
 public class TesttableServiceImpl extends ServiceImpl<TesttableMapper, Testtable> implements ITesttableService {
     private final TesttableMapper testtableMapper;
 

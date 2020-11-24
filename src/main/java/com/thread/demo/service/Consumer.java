@@ -1,4 +1,4 @@
-package test.thread.demo.service;
+package com.thread.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
@@ -8,7 +8,7 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
 import org.springframework.stereotype.Component;
-import test.thread.demo.config.JmsConfig;
+import com.thread.demo.config.JmsConfig;
 
 import java.io.UnsupportedEncodingException;
 
@@ -48,13 +48,14 @@ public class Consumer {
             // 会把不同的消息分别放置到不同的队列中
             try {
                 for (Message msg : msgs) {
-
-                    //消费者获取消息 这里只输出 不做后面逻辑处理
+                    //消费者获取消息  进行相关业务处理  业务用事务包裹回滚
                     String body = new String(msg.getBody(), "utf-8");
                     log.info("Consumer-获取消息-主题topic为={}, 消费消息为={}", msg.getTopic(), body);
+
                 }
-            } catch (UnsupportedEncodingException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                //如果消费时出现异常 业务方消费失败，之后进行重新尝试消费
                 return ConsumeConcurrentlyStatus.RECONSUME_LATER;
             }
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

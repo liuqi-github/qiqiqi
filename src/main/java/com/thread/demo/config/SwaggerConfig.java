@@ -1,4 +1,4 @@
-package test.thread.demo.config;
+package com.thread.demo.config;
 
 import io.swagger.annotations.Contact;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("test.thread.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.thread.demo.controller"))
                 .paths(PathSelectors.any())
                 //.paths(PathSelectors.ant("/api/product-declare/product/get-maintain-tag"))
                 .build().apiInfo(new ApiInfoBuilder()

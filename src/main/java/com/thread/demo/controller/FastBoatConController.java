@@ -1,4 +1,4 @@
-package test.thread.demo.controller;
+package com.thread.demo.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
