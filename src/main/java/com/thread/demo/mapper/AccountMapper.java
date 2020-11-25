@@ -1,6 +1,5 @@
 package com.thread.demo.mapper;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.thread.demo.entity.Account;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

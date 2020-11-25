@@ -1,5 +1,7 @@
 package com.transfer.account.demo;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.thread.demo.DemoApplication;
 import com.thread.demo.config.JmsConfig;
 import com.thread.demo.entity.Account;
@@ -62,7 +64,10 @@ public class DemoApplicationTests {
 
     @Test
     public void testMoreDataBases(){
-        List<Account> accounts = accountService.getBaseMapper().selectList(null);
+        QueryWrapper wrapper = new QueryWrapper<Account>();
+        wrapper.eq("person_account", 123456);
+
+        List<Account> accounts = accountService.getBaseMapper().selectList(wrapper);
 
         List<Account> accounts1 = accountService.seletctAllAccount();
 

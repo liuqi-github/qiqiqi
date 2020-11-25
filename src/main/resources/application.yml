@@ -17,7 +17,7 @@ spring:
         #          password: root
         #          driver-class-name: com.mysql.cj.jdbc.Driver
 
-        db2:
+        db1:
           driver-class-name: com.p6spy.engine.spy.P6SpyDriver
           url: jdbc:p6spy:mysql://39.101.196.48:3307/transfer?characterEncoding=utf8&useSSL=false&serverTimezone=GMT
           username: root
@@ -30,7 +30,9 @@ spring:
 #日志
 logging:
   level:
-    com.example.demo : debug
+    com.example.demo : DEBUG
+#  config: classpath:log/logback-spring.xml
+#  path: C:/nmyslog/nmys
 
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
