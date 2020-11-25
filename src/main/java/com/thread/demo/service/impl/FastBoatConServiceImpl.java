@@ -1,5 +1,6 @@
 package com.thread.demo.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.thread.demo.entity.FastBoatCon;
 import com.thread.demo.mapper.FastBoatConMapper;
 import com.thread.demo.service.IFastBoatConService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2020-11-23
  */
 @Service
+@DS("master")
 public class FastBoatConServiceImpl extends ServiceImpl<FastBoatConMapper, FastBoatCon> implements IFastBoatConService {
 
 }

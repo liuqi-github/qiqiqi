@@ -61,6 +61,8 @@ public class Consumer {
                     String body = new String(msg.getBody(), "utf-8");
                     log.info("Consumer-获取消息-主题topic为={}, 消费消息为={}", msg.getTopic(), body);
 
+
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

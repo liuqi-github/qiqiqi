@@ -1,14 +1,15 @@
 package com.transfer.account.demo;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.thread.demo.DemoApplication;
 import com.thread.demo.config.JmsConfig;
 import com.thread.demo.entity.Account;
+import com.thread.demo.entity.MessageTable;
 import com.thread.demo.entity.Testtable;
 import com.thread.demo.service.Consumer;
 import com.thread.demo.service.Producer;
 import com.thread.demo.service.impl.AccountServiceImpl;
+import com.thread.demo.service.impl.MessageTableServiceImpl;
 import com.thread.demo.service.impl.TesttableServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -33,6 +34,8 @@ public class DemoApplicationTests {
     private Consumer consumer;
     @Autowired
     private AccountServiceImpl accountService;
+    @Autowired
+    private MessageTableServiceImpl messageTableService;
 
     private List<String> mesList;
 
@@ -64,16 +67,20 @@ public class DemoApplicationTests {
 
     @Test
     public void testMoreDataBases(){
-        QueryWrapper wrapper = new QueryWrapper<Account>();
-        wrapper.eq("person_account", 123456);
+//        QueryWrapper wrapper = new QueryWrapper<Account>();
+//        wrapper.eq("person_account", 123456);
+//
+//        List<Account> accounts = accountService.getBaseMapper().selectList(wrapper);
+//
+//        List<Account> accounts1 = accountService.seletctAllAccount();
+//
+//        Testtable testtables = testtableService.getBaseMapper().selectAllNum();
+//
+//        System.out.println(1);
 
-        List<Account> accounts = accountService.getBaseMapper().selectList(wrapper);
 
-        List<Account> accounts1 = accountService.seletctAllAccount();
+        System.out.println("预发消息id"+messageTableService.insertMessage("hello"));
 
-        Testtable testtables = testtableService.getBaseMapper().selectAllNum();
-
-        System.out.println(1);
     }
 
 }

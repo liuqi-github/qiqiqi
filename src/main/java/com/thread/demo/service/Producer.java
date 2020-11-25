@@ -1,8 +1,12 @@
 package com.thread.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.stereotype.Component;
 import com.thread.demo.config.JmsConfig;
 
@@ -44,5 +48,15 @@ public class Producer {
      */
     public void shutdown(){
         this.producer.shutdown();
+    }
+
+    //发送消息
+    public void send(String s) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
+        //创建生产信息
+        Message message = new Message(JmsConfig.TOPIC, "testtag", ("小小一家人的称谓:" + s).getBytes());
+        //发送
+        SendResult sendResult = producer.send(message);
+
+        log.info("输出生产者信息={}",sendResult);
     }
 }

@@ -1,6 +1,9 @@
 package com.thread.demo.service;
 
+import com.thread.demo.entity.MessageTable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author LiuQi
@@ -8,6 +11,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TransferAccountService {
+    private final IMessageTableService iMessageTableService;
+
+    @Autowired
+    public TransferAccountService(IMessageTableService iMessageTableService){
+        this.iMessageTableService = iMessageTableService;
+    }
+
     /**
      * 总结
      * 1.创建一个消息数据库表 每次调用服务生成一个唯一消息id 将这条消息落库并记录消息状态为待发送的状态 返回消息id进行后面的操作
@@ -17,6 +27,27 @@ public class TransferAccountService {
      *
      * 3.如果 以上步骤都成功 调用消息服务 将消息发送到mq
      */
+
+    //生成转账订单
+    @Transactional
+    public void  generateOrder(){
+
+
+
+
+    }
+
+
+    @Transactional
+    public void  transferAccount(){
+        //账户转账
+
+
+
+
+
+    }
+
 
 
 
