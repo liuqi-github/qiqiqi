@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @date 2020/11/23 15:46
  */
 @Slf4j
-@Component
+//@Component
 public class Consumer2 {
     /**
      * 通过构造函数 实例化对象

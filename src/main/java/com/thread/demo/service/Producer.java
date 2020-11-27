@@ -1,5 +1,11 @@
 package com.thread.demo.service;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.thread.demo.entity.Account;
+import com.thread.demo.entity.MessageTable;
+import com.thread.demo.enums.MessageEnum;
+import com.thread.demo.enums.MessageTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -50,13 +56,5 @@ public class Producer {
         this.producer.shutdown();
     }
 
-    //发送消息
-    public void send(String s) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        //创建生产信息
-        Message message = new Message(JmsConfig.TOPIC, "testtag", ("小小一家人的称谓:" + s).getBytes());
-        //发送
-        SendResult sendResult = producer.send(message);
 
-        log.info("输出生产者信息={}",sendResult);
-    }
 }

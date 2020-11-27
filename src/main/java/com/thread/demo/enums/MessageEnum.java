@@ -8,9 +8,11 @@ import lombok.Getter;
  */
 @Getter
 public enum MessageEnum {
-    FAIL_SEND(2, "发送失败"),
+    FAIL_SEND(3, "发送失败"),
 
-    SUCCESS_SEND(1, "已发送"),
+    SUCCESS_SEND(2, "已发送"),
+
+    LOCAL_TASK_SUCCESS(1, "本地事务执行完毕"),
 
     NOT_SEND(0, "待发送");
 

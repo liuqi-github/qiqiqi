@@ -2,7 +2,7 @@ package com.thread.demo.service;
 
 import com.thread.demo.entity.MessageTable;
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.swagger.models.auth.In;
+import java.util.*;
 
 /**
  * <p>
@@ -13,5 +13,6 @@ import io.swagger.models.auth.In;
  * @since 2020-11-25
  */
 public interface IMessageTableService extends IService<MessageTable> {
-    public int insertMessage(String msg);
+     int insertMessage(String msg);
+     List<Integer> findReSendMessageId();
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thread.demo.mapper.TransferOrderTableMapper">
+    <select id="findMsgIdByTime" resultType="com.thread.demo.entity.TransferOrderTable">
+        select *
+        from   transfer_order_table
+        <where>
+        <if test="startTime != null">
+            account_create_time gt; #{startTime}
+        </if>
+        </where>
+    </select>
+
+    <select id="findMaxTime" resultType="java.time.LocalDateTime">
+        select max(account_create_time)
+        from   transfer_order_table
+    </select>
+</mapper>

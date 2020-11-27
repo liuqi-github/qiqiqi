@@ -4,6 +4,9 @@ package com.thread.demo.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.thread.demo.enums.MessageTypeEnum;
+import com.thread.demo.service.Producer;
+import com.thread.demo.service.TransferAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +32,17 @@ import java.util.List;
 @RequestMapping("/testtable/")
 public class TesttableController {
     private final TesttableServiceImpl testtableService;
+    private final TransferAccountService transferAccountService;
+    private final Producer producer;
+
 
     @Autowired
-    public TesttableController(TesttableServiceImpl testtableService) {
+    public TesttableController(TesttableServiceImpl testtableService,
+                               Producer producer,
+                               TransferAccountService transferAccountService) {
         this.testtableService = testtableService;
+        this.producer = producer;
+        this.transferAccountService = transferAccountService;
     }
 
     @PostMapping("getAll")
@@ -53,6 +63,11 @@ public class TesttableController {
     @PostMapping("allNumber")
     public Testtable getAllNumber() {
         return testtableService.getAllNum();
+    }
+
+    @PostMapping("transferAccount")
+    public void transferAccount(MessageTypeEnum messageTypeEnum, String accountName, String toAccount, Integer money) {
+        transferAccountService.generateOrder(messageTypeEnum, accountName, toAccount, money);
     }
 
 }

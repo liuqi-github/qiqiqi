@@ -3,14 +3,14 @@ package com.transfer.account.demo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.thread.demo.DemoApplication;
 import com.thread.demo.config.JmsConfig;
-import com.thread.demo.entity.Account;
-import com.thread.demo.entity.MessageTable;
-import com.thread.demo.entity.Testtable;
+import com.thread.demo.entity.TransferOrderTable;
 import com.thread.demo.service.Consumer;
 import com.thread.demo.service.Producer;
+import com.thread.demo.service.TransferAccountService;
 import com.thread.demo.service.impl.AccountServiceImpl;
 import com.thread.demo.service.impl.MessageTableServiceImpl;
 import com.thread.demo.service.impl.TesttableServiceImpl;
+import com.thread.demo.service.impl.TransferOrderTableServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
@@ -36,6 +37,10 @@ public class DemoApplicationTests {
     private AccountServiceImpl accountService;
     @Autowired
     private MessageTableServiceImpl messageTableService;
+    @Autowired
+    private TransferAccountService transferAccountService;
+    @Autowired
+    private TransferOrderTableServiceImpl transferOrderTableService;
 
     private List<String> mesList;
 
@@ -78,10 +83,13 @@ public class DemoApplicationTests {
 //
 //        System.out.println(1);
 
+        TransferOrderTable transferOrderTable = transferOrderTableService.getOneDb1(new QueryWrapper<TransferOrderTable>().eq("msg_id", 20));
 
-        System.out.println("预发消息id"+messageTableService.insertMessage("hello"));
+        TransferOrderTable transferOrderTable1 = transferOrderTableService.getOneMaster(new QueryWrapper<TransferOrderTable>().eq("msg_id", 20));
 
+        transferOrderTable.setAccountCreateTime(LocalDateTime.now());
+        transferOrderTable.setMsgId(999);
+        transferOrderTableService.saveMaster(transferOrderTable);
     }
-
 }
 

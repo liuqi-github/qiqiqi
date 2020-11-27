@@ -1,5 +1,7 @@
 package com.thread.demo.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.thread.demo.entity.TransferOrderTable;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -8,6 +10,7 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.thread.demo.config.JmsConfig;
 
@@ -20,6 +23,9 @@ import java.io.UnsupportedEncodingException;
 @Slf4j
 @Component
 public class Consumer {
+    @Autowired
+    private TransferAccountService transferAccountService;
+
 
     /**
      * 消费者实体对象
@@ -29,11 +35,11 @@ public class Consumer {
      * 消费者组
      */
     public static final String CONSUMER_GROUP = "test_consumer";
+
     /**
      * 通过构造函数 实例化对象
      */
     public Consumer() throws MQClientException {
-
         consumer = new DefaultMQPushConsumer(CONSUMER_GROUP);
         //不开启vip通道 开通口端口会减2
         consumer.setVipChannelEnabled(false);
@@ -61,8 +67,7 @@ public class Consumer {
                     String body = new String(msg.getBody(), "utf-8");
                     log.info("Consumer-获取消息-主题topic为={}, 消费消息为={}", msg.getTopic(), body);
 
-
-
+                    transferAccountService.consumerAddMoney(body);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -75,4 +80,6 @@ public class Consumer {
         consumer.start();
         System.out.println("消费者 启动成功=======");
     }
+
+
 }

@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -34,5 +36,16 @@ public class MessageTableServiceImpl extends ServiceImpl<MessageTableMapper, Mes
         messageTable.setStatus(0);
         messageTableMapper.insert(messageTable);
         return messageTable.getId();
+    }
+
+    @Override
+    public List<Integer> findReSendMessageId() {
+        return messageTableMapper.findReSendMessageId();
+    }
+
+    @Override
+    @DS("master")
+    public boolean updateById(MessageTable entity) {
+        return super.updateById(entity);
     }
 }
