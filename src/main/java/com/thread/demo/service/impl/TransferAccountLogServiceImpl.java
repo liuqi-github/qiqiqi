@@ -1,5 +1,6 @@
 package com.thread.demo.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.thread.demo.entity.TransferAccountLog;
 import com.thread.demo.mapper.TransferAccountLogMapper;
 import com.thread.demo.service.ITransferAccountLogService;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
  * @since 2020-11-27
  */
 @Service
+@DS("db1")
 public class TransferAccountLogServiceImpl extends ServiceImpl<TransferAccountLogMapper, TransferAccountLog> implements ITransferAccountLogService {
     private TransferAccountLogMapper transferAccountLogMapper;
 
@@ -25,7 +27,6 @@ public class TransferAccountLogServiceImpl extends ServiceImpl<TransferAccountLo
     public TransferAccountLogServiceImpl(TransferAccountLogMapper transferAccountLogMapper) {
         this.transferAccountLogMapper = transferAccountLogMapper;
     }
-
 
     @Override
     public LocalDateTime findLastTime() {

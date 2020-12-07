@@ -6,7 +6,7 @@
         from   transfer_order_table
         <where>
         <if test="startTime != null">
-            account_create_time gt; #{startTime}
+            account_create_time >  #{startTime}
         </if>
         </where>
     </select>

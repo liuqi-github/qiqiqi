@@ -1,6 +1,5 @@
 package com.thread.demo.service;
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.thread.demo.config.JmsConfig;
 import com.thread.demo.entity.Account;
@@ -66,7 +65,7 @@ public class TransferAccountService {
      */
 
     //本地事务 发送mq到消费端
-    public void  generateOrder(MessageTypeEnum messageTypeEnum, String accountName, String toAccount,Integer money){
+    public void  generateOrder(MessageTypeEnum messageTypeEnum, String accountName, String toAccount,Integer money) {
         //生成转账订单前  落库预消息
         int messageId = iMessageTableService.insertMessage(messageTypeEnum.getMemo());
         //创建订单预备消息  测试消息能否发送成功  此消息在客户端不可见  不做消费
@@ -84,6 +83,12 @@ public class TransferAccountService {
             log.error("转账账户不能为空");
             return;
         }
+
+        Account account1 = Optional.ofNullable(iAccountService.getOneMaster(new QueryWrapper<Account>().eq("person_account", accountName)))
+                                .orElseThrow(() -> {
+                                    log.error("转账账户不能为空");
+                                    return  new RuntimeException();
+                                });
 
         try{
             iAccountService.transferAccount(messageTypeEnum, accountName, toAccount, money, account, messageId);
@@ -147,8 +152,4 @@ public class TransferAccountService {
             e.printStackTrace();
         }
     }
-
-
-
-
 }
