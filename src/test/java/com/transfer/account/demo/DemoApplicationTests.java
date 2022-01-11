@@ -67,16 +67,8 @@ public class DemoApplicationTests {
     public static ReentrantLock reLock2 = new ReentrantLock(false);//创建一个非公平锁
 
     public static void main(String[] args) throws InterruptedException {
-/*      Demo d1 = new Demo(1);
-        Demo d2 = new Demo(2);
-        d1.start();
-        d2.start();
-        Thread.sleep(1000);
-        d2.interrupt();*/
 
-        String str = "dawada";
 
-        Integer.parseInt("91283472332");
     }
 
 

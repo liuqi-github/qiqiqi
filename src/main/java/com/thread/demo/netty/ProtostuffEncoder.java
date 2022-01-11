@@ -1,9 +1,5 @@
 package com.thread.demo.netty;
 
-import com.dyuproject.protostuff.LinkedBuffer;
-import com.dyuproject.protostuff.ProtobufIOUtil;
-import com.dyuproject.protostuff.Schema;
-import com.dyuproject.protostuff.runtime.RuntimeSchema;
 import com.thread.demo.entity.NettyMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -17,10 +13,10 @@ import io.netty.handler.codec.MessageToByteEncoder;
 public class ProtostuffEncoder extends MessageToByteEncoder<NettyMessage> {
     @Override
     protected void encode(ChannelHandlerContext ctx, NettyMessage msg, ByteBuf out) throws Exception {
-        LinkedBuffer buffer = LinkedBuffer.allocate(1024);
-        Schema<NettyMessage> schema = RuntimeSchema.getSchema(NettyMessage.class);
-        byte[] array = ProtobufIOUtil.toByteArray(msg, schema, buffer);
-        out.writeBytes(array);
+//        LinkedBuffer buffer = LinkedBuffer.allocate(1024);
+//        Schema<NettyMessage> schema = RuntimeSchema.getSchema(NettyMessage.class);
+//        byte[] array = ProtobufIOUtil.toByteArray(msg, schema, buffer);
+//        out.writeBytes(array);
     }
 
 }

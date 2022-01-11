@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.beans.Transient;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import io.swagger.annotations.ApiModel;
@@ -37,6 +38,8 @@ public class Testtable extends Model {
     private String completedTag;
 
     private LocalDateTime time;
+
+    private BigDecimal amount;
 
     @TableLogic
     private Integer flag;

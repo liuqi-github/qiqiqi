@@ -1,8 +1,5 @@
 package com.thread.demo.netty;
 
-import com.dyuproject.protostuff.ProtobufIOUtil;
-import com.dyuproject.protostuff.Schema;
-import com.dyuproject.protostuff.runtime.RuntimeSchema;
 import com.thread.demo.entity.NettyMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -18,12 +15,12 @@ import java.util.*;
 public class ProtostuffDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        Schema<NettyMessage> schema = RuntimeSchema.getSchema(NettyMessage.class);
-        NettyMessage nettyMessage = schema.newMessage();
-        byte[] array = new byte[in.readableBytes()];
-        in.readBytes(array);
-        ProtobufIOUtil.mergeFrom(array, nettyMessage, schema);
-        out.add(nettyMessage);
+//        Schema<NettyMessage> schema = RuntimeSchema.getSchema(NettyMessage.class);
+//        NettyMessage nettyMessage = schema.newMessage();
+//        byte[] array = new byte[in.readableBytes()];
+//        in.readBytes(array);
+//        ProtobufIOUtil.mergeFrom(array, nettyMessage, schema);
+//        out.add(nettyMessage);
     }
 
 }
